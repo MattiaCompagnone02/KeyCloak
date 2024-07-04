@@ -1,19 +1,24 @@
 import json
+import os
 from urllib.parse import urlencode, quote_plus
 
 from flask import Flask, render_template, url_for, session, abort, redirect
 from authlib.integrations.flask_client import OAuth
 import json
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
 appConf = {
-    "OAUTH2_CLIENT_ID": "test_app",
-    "OAUTH2_CLIENT_SECRET": "lXEbCk6OB2rpCdZexNw0Bm9a8biplTZH",
-    "OAUTH2_ISSUER": "http://localhost:8080/realms/Mattia",
-    "FLASK_SECRET": "ALongRandomlyGeneratedString",
-    "FLASK_PORT": 3000
+    "OAUTH2_CLIENT_ID": os.getenv("OAUTH2_CLIENT_ID"),
+    "OAUTH2_CLIENT_SECRET": os.getenv("OAUTH2_CLIENT_SECRET"),
+    "OAUTH2_ISSUER": os.getenv("OAUTH2_ISSUER"),
+    "FLASK_SECRET": os.getenv("FLASK_SECRET"),
+    "FLASK_PORT": os.getenv("FLASK_PORT"),
 }
+
 
 app.secret_key = appConf["FLASK_SECRET"]
 oauth = OAuth(app)
