@@ -14,12 +14,10 @@ appConf = {
     "CLIENT_ID": os.getenv("CLIENT_ID"),
     "CLIENT_SECRET": os.getenv("CLIENT_SECRET"),
     "URL": os.getenv("URL"),
-    "KEYCLOAK_ADMIN": os.getenv("KEYCLOAK_ADMIN"),
-    "KEYCLOAK_ADMIN_PASSWORD": os.getenv("KEYCLOAK_ADMIN_PASSWORD"),
-    "REALM_NAME": os.getenv("REALM_NAME"),
     "REDIRECT_URI": os.getenv("REDIRECT_URI"),
     "LOGOUT_REDIRECT_URI": os.getenv("LOGOUT_REDIRECT_URI")
 }
+
 
 @app.route("/callback")
 def callback():

@@ -13,6 +13,9 @@ services:
       KC_METRICS_ENABLED: true
       KC_HEALTH_ENABLED: true
 
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+
     command: start-dev
     ports:
       - "8080:8080"
