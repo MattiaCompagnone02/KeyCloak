@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN pip install --no-cache-dir -r requirements.txt && apt-get update && apt-get install -y apache2-utils
+RUN pip install --no-cache-dir -r requirements.txt
 
 
 EXPOSE 80
