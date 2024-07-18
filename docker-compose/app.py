@@ -59,18 +59,14 @@ def callback():
         return jsonify({"error": "Can't retrieve token"}), response.status_code
 
 
-@app.route("/login")
+@app.route('/login', methods=['POST'])
 def login():
-    if "user" in session:
-        abort(404)
-    params = {
-        'client_id': appConf.get("CLIENT_ID"),
-        'response_type': 'code',
-        'scope': 'openid',
-        'redirect_uri': urls.callbackEndpoint
-    }
-    return redirect(
-        f"{urls.authEndpoint}?client_id={params['client_id']}&response_type={params['response_type']}&scope={params['scope']}&redirect_uri={params['redirect_uri']}")
+    username = request.form.get('username')
+    password = request.form.get('password')
+    if username == 'user' and password == 'pass':
+        return jsonify({'message': 'Login successful'}), 200
+    else:
+        return jsonify({'message': 'Invalid credentials'}), 401
 
 
 @app.route("/token", methods=['POST'])
